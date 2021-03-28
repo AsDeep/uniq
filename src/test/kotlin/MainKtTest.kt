@@ -37,5 +37,17 @@ internal class MainKtTest {
             File("testSources/output/3.txt").readLines()
         )
 
+        main(arrayOf("uniq", "-i", "-c", "-o", "testSources/output/4.txt", "testSources/input/4.txt"))
+        assertEquals(
+            File("testSources/outputExpected/4.txt").readLines(),
+            File("testSources/output/4.txt").readLines()
+        )
+
+        main(arrayOf("uniq", "-c", "-o", "testSources/output/4.txt", "testSources/input/4.txt"))
+        assertNotEquals(
+            File("testSources/outputExpected/4.txt").readLines(),
+            File("testSources/output/4.txt").readLines()
+        )
+
     }
 }

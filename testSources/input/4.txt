@@ -1,0 +1,6 @@
+abcDEF
+abcdef
+aBcDeF
+kotlin
+kotlin
+defabc
