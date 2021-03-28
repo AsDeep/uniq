@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+
 import org.kohsuke.args4j.*;
 
 public class ArgsParser {
@@ -15,13 +16,11 @@ public class ArgsParser {
     @Option(name = "-u", usage = "Only unique strings are out")
     public boolean onlyUnique = false;
 
-    @Option(name = "-o", usage = "output to this file")
+    @Option(name = "-o", usage = "Output to this file")
     public String out = "";
 
-    @Option(name = "-c", usage = "print count of replaced strings at first")
+    @Option(name = "-c", usage = "Print count of replaced strings at first")
     public Boolean count = false;
-
-
 
     @Argument
     public List<String> arguments = new ArrayList<>();
@@ -30,11 +29,12 @@ public class ArgsParser {
         new ArgsParser().parseArgs(args);
 
     }
+
     public void parseArgs(String[] args) {
         CmdLineParser parser = new CmdLineParser(this);
         try {
             parser.parseArgument(args);
-            if (arguments.isEmpty()  || (!arguments.get(0).equals("uniq") || arguments.size() > 2)) {
+            if (arguments.isEmpty() || (!arguments.get(0).equals("uniq") || arguments.size() > 2)) {
                 System.err.println("Wrong arguments. Usage: uniq [-i] [-u] [-c] [-s num] [-o ofile] [file]");
                 throw new IllegalArgumentException("");
             }
@@ -47,5 +47,5 @@ public class ArgsParser {
             input = arguments.get(1);
         }
     }
-    }
+}
 
